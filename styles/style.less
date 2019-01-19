@@ -1,0 +1,183 @@
+@import "./colors";
+@import "./fonts";
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: "Roboto";
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    background: url(../images/background.jpg) 100% no-repeat;
+    background-size: cover;
+}
+
+.github-app {
+    display: flex;
+    width: 650px;
+    height: 500px;
+    align-self: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 150px;
+
+    &__action-buttons {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        padding-left: 15px;
+        background-color: @color-dark-blue;
+
+        .action-button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+
+            &--close {
+                background-color: @color-red;
+            }
+
+            &--minimize {
+                background-color: @color-yellow;
+                margin: 0 10px;
+            }
+
+            &--maximize {
+                background-color: @color-green;
+            }
+        }
+    }
+
+    &__nav {
+        position: relative;
+        flex-grow: 1;
+
+        .nav-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            &__link {
+                display: flex;
+                align-items: center;
+                padding: 17px 17px 16px 15px;
+                font-family: "Roboto Light";
+                font-size: 14px;
+                color: @color-white;
+
+                &:hover {
+                    background: @color-violet-blue;
+                    cursor: pointer;
+                }
+
+                &--is-active {
+                    background: @color-violet-blue;
+                }
+
+                .link__label {
+                    margin-left: 10px;
+                }
+
+                .link__counter {
+                    margin-left: auto;
+                    font-size: 13px;
+                    color: @color-grey;
+                }
+            }
+        }
+    }
+
+    &__nav-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: .9;
+        background: @color-dark-blue;
+        z-index: -1;
+    }
+}
+
+.issues-list {
+    flex-basis: 500px;
+    background-color: @color-dirty-white;
+    padding: 5px 15px 20px 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    &__group {
+        margin-top: 5px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__date {
+        font-size: 12px;
+        color: @color-grey;
+    }
+
+    &__items {
+        margin-top: 6px;
+    }
+
+    &__item {
+        display: flex;
+        background-color: @color-white;
+        padding: 10px 28px 10px 11px;
+        margin-top: 5px;
+        border: 1px solid @color-light-grey;
+        border-radius: 5px;
+    }
+
+    &__label {
+        font-family: "Roboto Medium";
+        font-size: 15px;
+        color: @color-black;
+    }
+
+    &__star {
+        display: flex;
+        margin-left: auto;
+    }
+
+    input[type='checkbox'] {
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+    }
+
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+        position: relative;
+        cursor: pointer;
+    }
+
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 17px;
+        height: 16px;
+    }
+
+    [type="checkbox"]:not(:checked) + label:before {
+        background: url(../images/icon-star-white.svg);
+    }
+
+    [type="checkbox"]:checked + label:before {
+        background: url(../images/icon-star-dark.svg);
+    }
+}
